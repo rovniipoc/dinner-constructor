@@ -12,17 +12,6 @@ public class Main {
         dc = new DinnerConstructor();
         scanner = new Scanner(System.in);
 
-        dc.addNewDish("Первое", "Борщ");
-        dc.addNewDish("Первое", "Суп гороховый");
-        dc.addNewDish("Первое", "Крем-суп из шампиньонов");
-        dc.addNewDish("Второе", "Пюре с котлетой");
-        dc.addNewDish("Второе", "Макароны по-флотски");
-        dc.addNewDish("Напиток", "Чай");
-        dc.addNewDish("Напиток", "Компот");
-        dc.addNewDish("Напиток", "Морс");
-        dc.addNewDish("Напиток", "Кофе");
-        dc.addNewDish("Десерт", "Чизкейк");
-
         while (true) {
             printMenu();
             String command = scanner.nextLine();
@@ -66,13 +55,12 @@ public class Main {
         System.out.println("Вводите типы блюда, разделяя символом переноса строки (enter). Для завершения ввода введите пустую строку");
         String nextItem = scanner.nextLine();
 
-        //реализуйте ввод типов блюд
         ArrayList<String> arrayOfRequiredTypes = new ArrayList<>();
         while (!nextItem.isEmpty()) {
             if (dc.checkType(nextItem)) {
                 arrayOfRequiredTypes.add(nextItem);
                 nextItem = scanner.nextLine();
-            } else if (nextItem == ""){
+            } else if (nextItem.isEmpty()){
                 break;
             } else {
                 System.out.println("Такого типа блюда нет в списке. Повторите ввод.");
@@ -80,7 +68,6 @@ public class Main {
             }
         }
 
-        // сгенерируйте комбинации блюд и выведите на экран
         dc.generateCombo(numberOfCombos, arrayOfRequiredTypes);
     }
 }
